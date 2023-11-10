@@ -1,0 +1,28 @@
+# RewriteEngine On
+
+# RewriteRule ^about ?target=about [L]
+# RewriteRule ^register ?target=register [L]
+# RewriteRule ^process ?target=process [L]
+# RewriteRule ^login ?target=login [L]
+# RewriteRule ^profile ?target=profile [L]
+# RewriteRule ^categories ?target=categories [L]
+# RewriteRule ^contact ?target=contact [L]
+# RewriteRule ^dashboard ?target=admin/index [L]
+# RewriteRule ^blogtext/([0-9]+)$ ?target=blogtext&id=$1 [L]
+# RewriteRule ^blog/([0-9]+)$ ?target=blog&id=$1 [L]
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /blogv3/
+
+    # admin/index.php?target=contact gibi bir URL'i admin/contact'a dönüştür
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^admin/([^/]+)$ admin/index.php?target=$1 [QSA,L]
+    RewriteRule ^admin/([^/]+)/([0-9]+)*$ admin/index.php?target=$1&id=$2 [QSA,L]
+
+    # Diğer sayfalar için genel yönlendirme
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^([^/]+)$ index.php?target=$1 [QSA,L]
+</IfModule>

@@ -1,0 +1,10 @@
+# # RewriteEngine On
+
+# # RewriteRule ^login ?target=login [L]
+# # RewriteRule ^addblog ?target=addblog [L]
+# # RewriteRule ^bloglist ?target=bloglist [L]
+# # RewriteRule ^contact ?target=contact [L]
+# # RewriteRule ^editabout ?target=editabout [L]
+# # RewriteRule ^roles ?target=roles [L]
+# # RewriteRule ^addmod ?target=addmod [L]
+# # RewriteRule ^editblog/([0-9]+)$ ?target=editblog&id=$1 [L]
